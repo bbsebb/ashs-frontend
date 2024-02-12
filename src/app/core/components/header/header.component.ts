@@ -1,8 +1,9 @@
 import {Component, inject} from '@angular/core';
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatIconButton} from "@angular/material/button";
 import {SidenavOpeningService} from "../../services/sidenav-opening.service";
+import {NgOptimizedImage} from "@angular/common";
 
 @Component({
   selector: 'app-header',
@@ -10,12 +11,14 @@ import {SidenavOpeningService} from "../../services/sidenav-opening.service";
   imports: [
     MatToolbar,
     MatIcon,
-    MatIconButton
+    MatIconButton,
+    NgOptimizedImage,
+    MatAnchor
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  isOpen = inject(SidenavOpeningService);
+  sidenavOpeningService = inject(SidenavOpeningService);
 
 }

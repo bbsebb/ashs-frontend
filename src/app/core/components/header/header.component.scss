@@ -1,0 +1,22 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.right-menu, .logo, .left-menu {
+  display: flex;
+  align-items: center;
+}
+
+a {
+  color:inherit;
+  text-decoration: inherit;
+  font-family: inherit;
+}
+
+a:hover {
+  color:inherit;
+  text-decoration: inherit;
+}

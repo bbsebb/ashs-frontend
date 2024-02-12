@@ -1,15 +1,29 @@
 <p>
   <mat-toolbar color="primary">
-    <button (click)="isOpen.toggle()" mat-icon-button id="navbar-toggle-button" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
+
+    <span class="right-menu">
+    <button (click)="sidenavOpeningService.toggle()" mat-icon-button id="navbar-toggle-button" aria-label="Example icon-button with menu icon">
+      @if(sidenavOpeningService.isOpen()) {
+        <mat-icon>close</mat-icon>
+      } @else {
+        <mat-icon>menu</mat-icon>
+      }
     </button>
-    <span>My App</span>
-    <span class="spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+    <a href="http://boutique.hoenheimsports.fr">Boutique</a>
+    <button mat-icon-button aria-label="icon-button with facebook icon">
+      <mat-icon>facebook</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
+    <button mat-icon-button  aria-label="icon-button with instagram icon">
+      <mat-icon svgIcon="instagram">instagram</mat-icon>
     </button>
+    </span>
+
+    <span class="logo">
+      <img ngSrc="assets/logo.png" alt="logo" height="55" width="55" priority/>
+    </span>
+
+    <span class="left-menu">
+      Connexion
+    </span>
   </mat-toolbar>
 </p>
