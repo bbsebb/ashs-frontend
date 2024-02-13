@@ -3,6 +3,8 @@ import { SidenavComponent } from './sidenav.component';
 import {SidenavOpeningService} from "../../services/sidenav-opening.service";
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {provideRouter, RouterLink, RouterOutlet} from "@angular/router";
+import {RouterTestingModule} from "@angular/router/testing";
 
 
 describe('SidenavComponent', () => {
@@ -13,14 +15,17 @@ describe('SidenavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SidenavComponent,MatSidenavModule, NoopAnimationsModule],
-      providers: [{ provide: SidenavOpeningService, useValue: mockService }]
+      imports: [SidenavComponent,MatSidenavModule, NoopAnimationsModule,RouterTestingModule],
+      providers: [
+        { provide: SidenavOpeningService, useValue: mockService },
+
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(SidenavComponent);
     component = fixture.componentInstance;
-    mockService.isOpen.and.returnValue(true);
+
     fixture.detectChanges();
   });
 
@@ -28,7 +33,19 @@ describe('SidenavComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update "opened" based on SidenavOpeningService', () => {
+  it('should update "opened" to true based on SidenavOpeningService', () => {
+    mockService.isOpen.and.returnValue(true);
+    fixture = TestBed.createComponent(SidenavComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
     expect(component.opened).toBeTrue();
+  });
+
+  it('should update "opened" to false based on SidenavOpeningService', () => {
+    mockService.isOpen.and.returnValue(false);
+    fixture = TestBed.createComponent(SidenavComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.opened).toBeFalse();
   });
 });
