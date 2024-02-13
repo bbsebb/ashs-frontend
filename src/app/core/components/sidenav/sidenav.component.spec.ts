@@ -1,9 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SidenavComponent } from './sidenav.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {SidenavComponent} from './sidenav.component';
 import {SidenavOpeningService} from "../../services/sidenav-opening.service";
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSidenavModule} from "@angular/material/sidenav";
-import {provideRouter, RouterLink, RouterOutlet} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 
 
