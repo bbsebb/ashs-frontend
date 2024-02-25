@@ -1,6 +1,6 @@
 // Utilisation de modules et importations
 @use '@angular/material' as mat;
-@use 'styles/background_and_color' as mixin;
+@use 'styles/background_and_color' as backgroundColor;
 @use 'styles/theme' as theme;
 @import "styles/color-adjustment";
 
@@ -16,7 +16,7 @@ footer {
 
   // Styles spécifiques au second footer
   section:nth-of-type(2) {
-    @include mixin.background-color('primary'); // Fond coloré selon la couleur primaire du thème
+    @include backgroundColor.theme-colors('primary'); // Fond coloré selon la couleur primaire du thème
   }
 
   section {
@@ -56,7 +56,7 @@ a.sponsor {
 
 // Styles pour le troisième footer
 .social-and-legal {
-  @include mixin.background-color('primary'); // Fond coloré selon la couleur primaire du thème
+  @include backgroundColor.theme-colors('primary'); // Fond coloré selon la couleur primaire du thème
 
   // Séparation entre les sections
   .separation {
