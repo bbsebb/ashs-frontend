@@ -3,7 +3,7 @@
 
 $background_color: mat.get-theme-color(variables.$my-theme, primary);
 
-.mat-toolbar {
+mat-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
