@@ -4,6 +4,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatAnchor, MatIconAnchor, MatIconButton} from "@angular/material/button";
 import {SidenavOpeningService} from "../../services/sidenav-opening.service";
 import {NgOptimizedImage} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ import {NgOptimizedImage} from "@angular/common";
     MatIconButton,
     NgOptimizedImage,
     MatAnchor,
-    MatIconAnchor
+    MatIconAnchor,
+    RouterLink
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
