@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss/utilities';
+@import 'styles/theme';
+
 html, body { height: 100%; }
 body {
   margin: 0;
@@ -8,4 +10,15 @@ body {
 }
 .spacer {
   flex: 1 1 auto;
+}
+
+a {
+  color:inherit;
+  text-decoration: inherit;
+  font-family: inherit;
+}
+
+a:hover {
+  color:inherit;
+  text-decoration: inherit;
 }
