@@ -1,30 +1,7 @@
-// Importation des modules nécessaires
-@use 'styles/theme' as variables;
-@use '@angular/material' as mat;
-
-/**
- * Mixin pour définir la couleur de fond et la couleur de texte en fonction d'une palette de couleurs du thème.
- *
- * @param $keyword La clé de la palette de couleurs à utiliser ('primary', 'accent', 'warn'). Par défaut, 'primary'.
- */
-@mixin background-color($keyword: 'primary') {
-  // Initialisation des variables pour la couleur de fond et la couleur de texte
-  $background-color: null;
-  $color: null;
-
-  // Sélection de la palette de couleurs en fonction du mot-clé fourni
-  @if $keyword == 'accent' {
-    $background-color: mat.get-theme-color(variables.$my-theme, accent);
-    $color: mat.get-theme-color(variables.$my-theme, accent, default-contrast);
-  } @else if $keyword == 'warn' {
-    $background-color: mat.get-theme-color(variables.$my-theme, warn);
-    $color: mat.get-theme-color(variables.$my-theme, warn, default-contrast);
-  } @else { // 'primary' ou toute autre valeur non spécifiée
-    $background-color: mat.get-theme-color(variables.$my-theme, primary);
-    $color: mat.get-theme-color(variables.$my-theme, primary, default-contrast);
-  }
-
-  // Application des couleurs définies
-  background-color: $background-color;
-  color: $color;
+@use 'styles/background' as background;
+@use 'styles/color' as color;
+// Mixin pour combiner la couleur de fond et la couleur du texte
+@mixin theme-colors($keyword: 'primary') {
+  @include background.background-color($keyword);
+  @include color.text-color($keyword);
 }
