@@ -8,11 +8,7 @@ mat-toolbar {
   justify-content: space-between;
   align-items: center;
   height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+
   padding-left: calc(20px + (100% - 1200px) / 2);
   padding-right: calc(20px + (100% - 1200px) / 2);
   box-shadow: 0 4px 8px rgba(darken($background_color, 20%), 0.2);
