@@ -3,6 +3,7 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {MatIcon} from "@angular/material/icon";
 import {MatAnchor, MatIconAnchor} from "@angular/material/button";
 import {NgOptimizedImage} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +13,8 @@ import {NgOptimizedImage} from "@angular/common";
     MatIcon,
     MatIconAnchor,
     MatAnchor,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
