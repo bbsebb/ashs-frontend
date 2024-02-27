@@ -4,14 +4,12 @@
 $background_color: mat.get-theme-color(variables.$my-theme, primary);
 
 mat-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 80px;
-
+  position: relative;
   padding-left: calc(20px + (100% - 1200px) / 2);
   padding-right: calc(20px + (100% - 1200px) / 2);
   box-shadow: 0 4px 8px rgba(darken($background_color, 20%), 0.2);
+  z-index: 1000;
 
   > * {
     display: flex;
@@ -19,16 +17,19 @@ mat-toolbar {
   }
 
   .left-menu {
+    max-width: 50%;
     flex-grow: 2;
   }
 
   .right-menu {
+    max-width: 50%;
     display: flex;
     justify-content: flex-end;
     flex-grow: 2;
   }
 
   .logo {
+    margin: 0 10px;
     border: 1px solid #000;
     border-radius: 50%;
     padding: 2px;
@@ -53,5 +54,24 @@ mat-toolbar {
     padding-right: 20px;
   }
 }
+
+.banner-container {
+  width: 100%;
+}
+.banner {
+  width: 100%; /* Assure que le conteneur prend toute la largeur */
+  max-width: 1200px;
+  height: 25vh; /* 15% de la hauteur de l'écran */
+  background-image: url('/assets/banniere.png'); /* Remplacez par le chemin de votre image */
+  background-size: cover; /* Maintient le ratio d'aspect tout en s'assurant que l'image est entièrement visible */
+  background-position: center; /* Centre l'image dans le conteneur */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+
+  margin:auto;
+  @media (min-width: 800px) {
+    min-height: 350px;
+  }
+}
+
 
 

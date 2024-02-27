@@ -8,7 +8,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #fafafa;
+  background-color: mat.get-theme-color(variables.$my-theme, background,background);
 }
 main {
   max-width: 800px;

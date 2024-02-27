@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ashs-e1731": {
+      "hosting": {
+        "frontend": [
+          "ashs-e1731"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ashs-e1731"
+  }
+}
