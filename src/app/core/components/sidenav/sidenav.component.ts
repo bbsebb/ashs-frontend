@@ -4,6 +4,7 @@ import {SidenavOpeningService} from "../../services/sidenav-opening.service";
 import {BooleanInput} from "@angular/cdk/coercion";
 import {RouterLink, RouterOutlet} from "@angular/router";
 import {MatListItem, MatNavList} from "@angular/material/list";
+import {BannerComponent} from "../banner/banner.component";
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +14,8 @@ import {MatListItem, MatNavList} from "@angular/material/list";
     RouterOutlet,
     MatListItem,
     MatNavList,
-    RouterLink
+    RouterLink,
+    BannerComponent
   ],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss'
