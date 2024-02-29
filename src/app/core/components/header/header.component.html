@@ -1,5 +1,5 @@
-@if (switchToolbar()) {
-  <mat-toolbar color="primary">
+@if (showToolbar()) {
+  <mat-toolbar color="primary" @toolbarAnimation [@.disabled]="animationDisabled">
 
       <span class="left-menu">
         <button (click)="sidenavOpeningService.toggle()" mat-icon-button id="navbar-toggle-button" aria-label="Example icon-button with menu icon">
@@ -32,6 +32,4 @@
 
   </mat-toolbar>
  }
-  <div class="banner-container">
-    <div class="banner"></div>
-  </div>
+
