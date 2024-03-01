@@ -41,50 +41,41 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   ],
 })
 
-export class HeaderComponent implements OnInit,AfterViewInit {
+export class HeaderComponent {
 
-  private readonly injector = inject(Injector);
   private readonly scrollDispatcher = inject(ScrollDispatcher);
   private readonly viewportRuler = inject(ViewportRuler);
   protected readonly sidenavOpeningService :SidenavOpeningService = inject(SidenavOpeningService);
 
 
-  showToolbar: Signal<boolean | undefined> = signal(true);
-  scrollLimit: Signal<boolean > = signal(true); // true = above the limite, false = below the limit
-  directionScroll: Signal<boolean | undefined> = signal(true); // true = up, false = down
+
 
   animationDisabled: boolean = true;
 
+  private readonly viewportTop$ = this.scrollDispatcher.scrolled()
+    .pipe(
+      startWith(void 0),
+      map(() => this.viewportRuler.getViewportScrollPosition().top)
+    );
+  scrollLimit = toSignal<boolean>(this.viewportTop$
+    .pipe(
+      map((top) => top < 349)
+    ),{initialValue:true}) ;
 
-  ngOnInit(): void {
-    const viewportTop$ = this.scrollDispatcher.scrolled()
-      .pipe(
-        startWith(void 0),
-        map(() => this.viewportRuler.getViewportScrollPosition().top)
-      );
-    this.scrollLimit = toSignal<boolean>(viewportTop$
-      .pipe(
-        map((top) => top < 349)
-      ), {injector: this.injector}) as Signal<boolean>;
+  directionScroll = toSignal<boolean>(this.viewportTop$
+    .pipe(
+      scan((acc: number[], current: number) => [acc[1], current], [this.viewportRuler.getViewportScrollPosition().top, 0]),
+      map(([prev, current]) => prev >= current),
+    ));
 
-    this.directionScroll = toSignal<boolean>(viewportTop$
-      .pipe(
-        scan((acc: number[], current: number) => [acc[1], current], [this.viewportRuler.getViewportScrollPosition().top, 0]),
-        map(([prev, current]) => prev >= current),
-      ), {injector: this.injector});
-
-   this.showToolbar = computed(() => this.directionScroll() || this.scrollLimit());
-
+  showToolbar = computed(() => this.directionScroll() || this.scrollLimit());
+  constructor() {
     effect(() => {
       this.showToolbar();
-    },{injector: this.injector});
-
-
+    });
   }
 
-  ngAfterViewInit(): void {
-    this.animationDisabled = false;
-  }
+
 
 
   onAnimation(event: any) {
