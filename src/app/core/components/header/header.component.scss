@@ -4,6 +4,7 @@
 $background_color: mat.get-theme-color(variables.$my-theme, primary);
 
 mat-toolbar {
+
   height: 80px;
   position: fixed;
   padding-left: calc(20px + (100% - 1200px) / 2);

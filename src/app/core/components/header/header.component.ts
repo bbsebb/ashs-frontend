@@ -9,7 +9,7 @@ import {scan, startWith} from "rxjs";
 import {toSignal} from "@angular/core/rxjs-interop";
 import {map} from "rxjs/operators";
 import {SidenavOpeningService} from "../../services/sidenav-opening.service";
-import {animate, style, transition, trigger} from "@angular/animations";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-header',
@@ -27,16 +27,20 @@ import {animate, style, transition, trigger} from "@angular/animations";
   styleUrl: './header.component.scss',
   animations: [
     trigger('toolbarAnimation', [
-      transition(':enter', [
-        style({ transform: 'translateY(-100%)' }), // Commence hors de l'écran
-        animate('300ms ease-out', style({ transform: 'translateY(0)' })), // Anime vers la position normale
-      ]),
-      transition(':leave', [
-        animate('300ms ease-in', style({ transform: 'translateY(-100%)' })), // Anime hors de l'écran
-      ]),
+      state(
+        'open',
+        style({ transform: 'translateY(0px)'})
+      ),
+      state(
+        'close',
+        style({ transform: 'translateY(-100px)'})
+      ),
+      transition('open => close',[animate('300ms ease-out')]),
+      transition('close  => open',[animate('300ms ease-in')]),
     ]),
   ],
 })
+
 export class HeaderComponent implements OnInit,AfterViewInit {
 
   private readonly injector = inject(Injector);
@@ -50,6 +54,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
   directionScroll: Signal<boolean | undefined> = signal(true); // true = up, false = down
 
   animationDisabled: boolean = true;
+
 
   ngOnInit(): void {
     const viewportTop$ = this.scrollDispatcher.scrolled()
@@ -82,4 +87,7 @@ export class HeaderComponent implements OnInit,AfterViewInit {
   }
 
 
+  onAnimation(event: any) {
+    //console.log('start',event)
+  }
 }
