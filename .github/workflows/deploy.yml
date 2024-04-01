@@ -1,0 +1,35 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - prod  # Ou votre branche de déploiement
+
+jobs:
+  deploy_live_website:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject Firebase config into environment file
+        run: sed -i "s|FIREBASE_CONFIG_PLACEHOLDER|${{ secrets.FIREBASE_CONFIG }}|g" src/environments/environment.prod.ts
+        shell: bash
+
+      - name: Build Angular app
+        run: npm run build --configuration=production
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          projectId: ashs-e1731
+          channelId: live  # ou omettez ceci pour un déploiement de prévisualisation
+
