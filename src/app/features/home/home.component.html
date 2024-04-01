@@ -1,0 +1,14 @@
+<div class="home-container">
+  @if (onLoadMedia()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+  @for (media of media$ | async; track media) {
+    <app-instagram-media [media]="media"></app-instagram-media>
+  } @empty {
+    @if (!onLoadMedia()) {
+      <p class="mat-body-1">Aucun média trouvé</p>
+    }
+  }
+
+</div>
+

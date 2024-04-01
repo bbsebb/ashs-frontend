@@ -1,0 +1,87 @@
+// Utilisation de modules et importations
+@use '@angular/material' as mat;
+@use 'styles/background_and_color' as backgroundColor;
+@use 'styles/theme' as theme;
+@import "styles/color-adjustment";
+// Variables globales pour le thème
+$color-primary: mat.get-theme-color(theme.$my-theme, primary, default-contrast);
+$carousel-control-bg: rgba(0, 0, 0, 0.05);
+$carousel-control-bg-hover: rgba(0, 0, 0, 0.2);
+$carousel-control-shadow: 0 0 3px white;
+
+// Mixins pour réutiliser les styles communs
+@mixin carousel-control-position($side: left, $distance: 10px) {
+
+  @if $side == left {
+    left: $distance;
+  } @else if $side == right {
+    right: $distance;
+  }
+}
+
+.instagram-card {
+  height: 100%;
+  min-width: 300px;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    &.active {
+      position: relative;
+      opacity: 1;
+      transform: translateX(0);
+    }
+    &:not(.active) {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+    }
+  }
+}
+
+.multi-instagram-card {
+  width: 30vw;
+}
+
+mat-card-content, mat-card-actions {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    color: adjust-color($color-primary);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.carousel-control {
+  position: absolute;
+  top: 30%;
+  z-index: 2;
+  background: $carousel-control-bg;
+  &:hover {
+    background: $carousel-control-bg-hover;
+  }
+  mat-icon {
+    filter: drop-shadow($carousel-control-shadow);
+  }
+}
+
+.prev {
+  @include carousel-control-position(left);
+}
+
+.next {
+  @include carousel-control-position(right);
+}
