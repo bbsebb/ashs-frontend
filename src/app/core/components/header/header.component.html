@@ -1,0 +1,35 @@
+
+  <mat-toolbar color="primary" [@toolbarAnimation]="showToolbar()? 'open':'close'">
+
+      <span class="left-menu">
+        <button (click)="sidenavOpeningService.toggle()" mat-icon-button id="navbar-toggle-button" aria-label="Example icon-button with menu icon">
+          @if(sidenavOpeningService.isOpen()) {
+            <mat-icon>close</mat-icon>
+          } @else {
+            <mat-icon>menu</mat-icon>
+          }
+        </button>
+        <a mat-icon-button href="https://boutique.hoenheimsports.fr" target="_blank" aria-label="icon-button with shopping icon">
+          <mat-icon>shopping_cart</mat-icon>
+        </a>
+        <a mat-icon-button href="https://facebook.com/hoenheimhandball" target="_blank" aria-label="icon-button with facebook icon">
+          <mat-icon>facebook</mat-icon>
+        </a>
+        <a mat-icon-button href="https://instagram.com/as_hoenheim_sports" target="_blank"  aria-label="icon-button with instagram icon">
+          <mat-icon [svgIcon]="'instagram'">instagram</mat-icon>
+        </a>
+      </span>
+
+      <a class="logo" routerLink="/">
+
+      </a>
+
+<!--      <span class="right-menu">
+        <button  mat-icon-button  aria-label="icon-button with login icon">
+        <mat-icon>login</mat-icon>
+        </button>
+      </span>-->
+
+  </mat-toolbar>
+
+

@@ -1,0 +1,17 @@
+.banner-container {
+  width: 100%;
+}
+.banner {
+  width: 100%; /* Assure que le conteneur prend toute la largeur */
+  max-width: 1200px;
+  height: 25vh; /* 15% de la hauteur de l'écran */
+  background-image: url('/assets/banniere.png'); /* Remplacez par le chemin de votre image */
+  background-size: cover; /* Maintient le ratio d'aspect tout en s'assurant que l'image est entièrement visible */
+  background-position: center; /* Centre l'image dans le conteneur */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+
+  margin: 80px auto 0;
+  @media (min-width: 800px) {
+    min-height: 350px;
+  }
+}

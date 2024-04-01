@@ -1,0 +1,104 @@
+// Utilisation de modules et importations
+@use '@angular/material' as mat;
+@use 'styles/background_and_color' as backgroundColor;
+@use 'styles/theme' as theme;
+@import "styles/color-adjustment";
+
+// Obtention de la couleur primaire à partir du thème
+$color-primary: mat.get-theme-color(theme.$my-theme, primary, default-contrast);
+
+
+footer {
+  z-index: 1000;
+  position: relative;
+  // Styles spécifiques au premier footer
+  section:first-of-type {
+    background-color: white;
+  }
+
+  // Styles spécifiques au second footer
+  section:nth-of-type(2) {
+    @include backgroundColor.theme-colors('primary'); // Fond coloré selon la couleur primaire du thème
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: center;
+  }
+}
+
+// Styles pour les sections du footer
+section {
+  .footer-container {
+    // Flexbox pour disposer les éléments en ligne et les envelopper
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 10px; // Marge extérieure
+  }
+}
+
+
+// Flexbox pour centrer les éléments
+a.sponsor {
+  display: block;
+  padding: 10px;
+  height: 80px; // Hauteur fixe pour les liens
+
+  img {
+    height: 80%; // Taille relative pour les images
+    width: auto;
+  }
+}
+
+
+// Styles pour le troisième footer
+.social-and-legal {
+  @include backgroundColor.theme-colors('primary'); // Fond coloré selon la couleur primaire du thème
+
+  // Séparation entre les sections
+  .separation {
+    background-color: mat.get-theme-color(theme.$my-theme, foreground, divider);
+    height: 3px;
+    width: 100%;
+    margin: 0 15% 10px; // Marge extérieure
+    flex-grow: 1;
+  }
+}
+
+// Styles des liens dans le footer
+.footer-links {
+  flex-grow: 2;
+  margin: 2px 10px;
+  h5 {
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: bolder;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.6); // Ombre du texte
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8em;
+    color: $color-primary; // Couleur du texte primaire
+    li {
+      margin: 5px 0;
+      a {
+        color: adjust-color($color-primary); // Ajustement de la couleur du texte primaire
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline; // Soulignement au survol
+        }
+      }
+    }
+  }
+}
+
