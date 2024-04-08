@@ -25,7 +25,7 @@
       @if(!isDialog && (media.caption | truncate: 100 : true); as result  ) {
         {{ result.text }}
         @if(result.isTruncated) {
-          <a href="" (click)="openDialog()">... Voir plus</a>
+          <a (click)="openDialog()">... Voir plus</a>
         }
       } @else {
         {{ media.caption }}
