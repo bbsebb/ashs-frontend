@@ -17,7 +17,7 @@ export class ContactService {
   constructor(private http:HttpClient) { }
 
   sendContactForm(data: ContactForm) {
-    return this.http.post(`${environment.apiUrl}/contact-service/sendEmail`, data)
+    return this.http.post(`${environment.apiUrl}/contact-service/api/sendEmail`, data)
       ;
   }
 }
