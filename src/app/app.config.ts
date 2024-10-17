@@ -26,6 +26,6 @@ export const appConfig: ApplicationConfig = {
     },
     multi: true
     },
-    importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))), importProvidersFrom(provideFirebaseApp(() => initializeApp({"projectId":"ashs-e1731","appId":"1:732036285378:web:d42053063adc140ca70c5b","storageBucket":"ashs-e1731.appspot.com","apiKey":"AIzaSyCHH5vJK_vSUFK0hPrmwD8e1fdmUo2V6Mg","authDomain":"ashs-e1731.firebaseapp.com","messagingSenderId":"732036285378","measurementId":"G-71RWDS4RZP"}))), importProvidersFrom(provideAuth(() => getAuth())),
+    importProvidersFrom(provideAuth(() => getAuth())),
     ]
 };
