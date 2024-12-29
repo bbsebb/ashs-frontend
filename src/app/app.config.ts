@@ -3,7 +3,7 @@ import {provideRouter} from '@angular/router';
 import {routes} from './app.routes';
 import {provideClientHydration} from '@angular/platform-browser';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
-import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import {IconRegistryService} from "./core/services/icon-registry.service";
 import {provideFirebaseApp, initializeApp} from "@angular/fire/app";
 import {environment} from "../environments/environment";

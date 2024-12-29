@@ -4,9 +4,6 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./out-tsc/app",
-    "paths": {
-      "@environments/*": ["src/environments/*"]
-    },
     "types": []
   },
   "files": [
