@@ -17,8 +17,6 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
         MatToolbar,
         MatIcon,
         MatIconButton,
-        NgOptimizedImage,
-        MatAnchor,
         MatIconAnchor,
         RouterLink
     ],

@@ -22,15 +22,15 @@ import {NgOptimizedImage} from "@angular/common";
         MatIcon,
         MatIconButton,
         TruncatePipe,
-        NgOptimizedImage
     ],
     templateUrl: './instagram-media.component.html',
     styleUrl: './instagram-media.component.scss'
 })
 export class InstagramMediaComponent {
   @Input() media!: Media;
+  childrenCount = this.media?.children ? this.media.children.length : 0;
   activeSlideIndex:WritableSignal<number> = signal(0);
-  showNextControl:Signal<boolean> = computed(() => this.activeSlideIndex() < this.media.children.length - 1)
+  showNextControl:Signal<boolean> = computed(() => this.activeSlideIndex() < this.childrenCount - 1)
   showPrevControl:Signal<boolean> = computed(() => this.activeSlideIndex() > 0)
   isDialog:boolean = false;
 
@@ -42,11 +42,11 @@ export class InstagramMediaComponent {
   }
 
   prevSlide() {
-    this.activeSlideIndex.update(index => index - 1 < 0 ? this.media.children.length - 1 : index - 1);
+    this.activeSlideIndex.update(index => index - 1 < 0 ? this.childrenCount - 1 : index - 1);
   }
 
   nextSlide() {
-    this.activeSlideIndex.update(index => index + 1 >= this.media.children.length ? 0 : index + 1);
+    this.activeSlideIndex.update(index => index + 1 >= this.childrenCount ? 0 : index + 1);
   }
 
   openDialog() {

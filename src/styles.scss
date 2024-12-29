@@ -1,37 +1,39 @@
-@use 'styles/theme' as variables;
 @use '@angular/material' as mat;
-/* You can add global styles to this file, and also import other style files */
-
+@use 'styles/theme-colors' as variables;
+html {
+  @include mat.theme((
+    color: variables.$primary-palette,
+    typography: (
+      plain-family: Roboto,
+      brand-family: Open Sans,
+      bold-weight: 900,
+      medium-weight: 500,
+      regular-weight: 400,
+    ),
+    density: 0
+  ));
+}
 
 
 html, body { height: 100%; }
 body {
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: mat.get-theme-color(variables.$my-theme, background,background);
-}
-main {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-
-
-  section {
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    color: mat.get-theme-color(variables.$my-theme, primary, A100-contrast);
-  }
 }
 
 a {
-  color:inherit;
-  text-decoration: inherit;
-  font-family: inherit;
+  color:var(--mat-sys-primary);
 }
 
-a:hover {
-  color:inherit;
-  text-decoration: inherit;
-}
+@include mat.toolbar-overrides((
+  container-background-color: var(--mat-sys-primary),
+  container-text-color: var(--mat-sys-on-primary)
+));
+
+@include mat.icon-button-overrides((
+  icon-color: var(--mat-sys-on-primary)
+))
+
+

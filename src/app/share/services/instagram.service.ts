@@ -3,10 +3,11 @@ import { HttpClient } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Media} from "../models/media";
 import { environment } from '@environments/environment';
+import {IInstagramService} from "@app/share/services/i-instagram.service";
 @Injectable({
   providedIn: 'root'
 })
-export class InstagramService {
+export class InstagramService implements IInstagramService{
 
   constructor(private http:HttpClient) { }
 
@@ -14,3 +15,4 @@ export class InstagramService {
     return this.http.get<Media[]>(`${environment.apiUrl}/instagram-service/api/media`);
   }
 }
+

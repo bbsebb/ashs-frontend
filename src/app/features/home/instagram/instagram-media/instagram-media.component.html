@@ -1,7 +1,7 @@
 <mat-card class="instagram-card" [class.multi-instagram-card]="!isDialog">
 
-  @if(media.mediaType === 'CAROUSEL_ALBUM') {
-    @for(img of media.children;track img;let i = $index) {
+  @if(media.mediaType === 'CAROUSEL_ALBUM' && media.children !== null) {
+    @for(img of media.children;track img.id;let i = $index) {
       <img mat-card-image [class.active]="i === activeSlideIndex()" [src]="img.mediaUrl" alt="Instagram media">
     }
     @if(showPrevControl()){

@@ -1,5 +1,5 @@
 // Définition des types énumérés en TypeScript, supposant que MediaType est une énumération
-enum MediaType {
+export enum MediaType {
 
   IMAGE = "IMAGE",
   VIDEO = "VIDEO",
@@ -15,6 +15,6 @@ export interface Media {
   caption: string;
   timestamp: string; // ISO 8601 string representation for dates
   permalink: string;
-  thumbnailUrl: string;
-  children: Media[]; // Si Media peut avoir des enfants de son propre type
+  thumbnailUrl: string | null;
+  children: Media[] | null; // Si Media peut avoir des enfants de son propre type
 }

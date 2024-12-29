@@ -5,10 +5,11 @@ import {provideClientHydration} from '@angular/platform-browser';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import {IconRegistryService} from "./core/services/icon-registry.service";
-import {provideFirebaseApp, initializeApp} from "@angular/fire/app";
-import {environment} from "../environments/environment";
-import { getAuth, provideAuth } from '@angular/fire/auth';
 import {apiKeyInterceptor} from "./core/interceptors/api-key.interceptor";
+import {StubInstagramService} from "@app/share/services/stub-instagram.service";
+import {IInstagramService, INSTAGRAM_SERVICE} from "@app/share/services/i-instagram.service";
+import {environment} from "@environments/environment";
+import {InstagramService} from "@app/share/services/instagram.service";
 
 
 
@@ -16,6 +17,16 @@ import {apiKeyInterceptor} from "./core/interceptors/api-key.interceptor";
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    {
+      provide: INSTAGRAM_SERVICE,
+      useFactory: () => {
+        if(environment.production) {
+          return inject(InstagramService);
+        } else {
+          return inject(StubInstagramService);
+        }
+      }
+    },
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([apiKeyInterceptor])),
@@ -26,6 +37,5 @@ export const appConfig: ApplicationConfig = {
     })();
         return initializerFn();
       }),
-    importProvidersFrom(provideAuth(() => getAuth())),
     ]
 };

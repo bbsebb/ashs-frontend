@@ -8,10 +8,8 @@ import {RouterLink} from "@angular/router";
 @Component({
     selector: 'app-footer',
     imports: [
-        MatToolbar,
         MatIcon,
         MatIconAnchor,
-        MatAnchor,
         NgOptimizedImage,
         RouterLink
     ],
