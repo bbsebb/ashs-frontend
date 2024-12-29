@@ -21,32 +21,31 @@ import {InstagramMediaComponent} from "./instagram/instagram-media/instagram-med
 import {MatProgressBar} from "@angular/material/progress-bar";
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    MatCard,
-    MatCardContent,
-    MatCardHeader,
-    MatCardTitle,
-    MatGridList,
-    MatGridTile,
-    MatIcon,
-    MatIconButton,
-    MatMenu,
-    MatMenuItem,
-    MatMenuTrigger,
-    MatCardActions,
-    MatButton,
-    MatCardImage,
-    NgOptimizedImage,
-    MatCardFooter,
-    FormatDatePipe,
-    InstagramMediaComponent,
-    MatProgressBar
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [
+        AsyncPipe,
+        MatCard,
+        MatCardContent,
+        MatCardHeader,
+        MatCardTitle,
+        MatGridList,
+        MatGridTile,
+        MatIcon,
+        MatIconButton,
+        MatMenu,
+        MatMenuItem,
+        MatMenuTrigger,
+        MatCardActions,
+        MatButton,
+        MatCardImage,
+        NgOptimizedImage,
+        MatCardFooter,
+        FormatDatePipe,
+        InstagramMediaComponent,
+        MatProgressBar
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
 

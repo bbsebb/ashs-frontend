@@ -17,14 +17,13 @@ import {MatProgressBar} from "@angular/material/progress-bar";
 import {SnackBarService} from "../../../share/services/snack-bar.service";
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatCardModule, MatProgressBar
-  ],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+    selector: 'app-contact',
+    imports: [
+        ReactiveFormsModule,
+        MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatCardModule, MatProgressBar
+    ],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.scss'
 })
 export class ContactComponent implements OnInit{
   @ViewChild(FormGroupDirective, {static: false}) formGroupDirective!: FormGroupDirective;

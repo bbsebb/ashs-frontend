@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, ApplicationConfig, importProvidersFrom, inject} from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, inject, provideAppInitializer } from '@angular/core';
 import {provideRouter} from '@angular/router';
 import {routes} from './app.routes';
 import {provideClientHydration} from '@angular/platform-browser';
@@ -19,13 +19,13 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([apiKeyInterceptor])),
-    { provide: APP_INITIALIZER,
-    useFactory: () => {
+    provideAppInitializer(() => {
+        const initializerFn = (() => {
       const iconRegistryService = inject(IconRegistryService);
       return () => iconRegistryService.registerIcons();
-    },
-    multi: true
-    },
+    })();
+        return initializerFn();
+      }),
     importProvidersFrom(provideAuth(() => getAuth())),
     ]
 };

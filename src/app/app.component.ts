@@ -5,11 +5,10 @@ import {SidenavComponent} from "./core/components/sidenav/sidenav.component";
 import {MainContentComponent} from "./core/components/main-content/main-content.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HeaderComponent, SidenavComponent, MainContentComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, HeaderComponent, SidenavComponent, MainContentComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = `Site de l'association sportive de Hoenheim sports handball`;

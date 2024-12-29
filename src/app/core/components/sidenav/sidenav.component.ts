@@ -7,18 +7,17 @@ import {MatListItem, MatNavList} from "@angular/material/list";
 import {BannerComponent} from "../banner/banner.component";
 
 @Component({
-  selector: 'app-sidenav',
-  standalone: true,
-  imports: [
-    MatSidenavModule,
-    RouterOutlet,
-    MatListItem,
-    MatNavList,
-    RouterLink,
-    BannerComponent
-  ],
-  templateUrl: './sidenav.component.html',
-  styleUrl: './sidenav.component.scss'
+    selector: 'app-sidenav',
+    imports: [
+        MatSidenavModule,
+        RouterOutlet,
+        MatListItem,
+        MatNavList,
+        RouterLink,
+        BannerComponent
+    ],
+    templateUrl: './sidenav.component.html',
+    styleUrl: './sidenav.component.scss'
 })
 export class SidenavComponent implements OnInit {
 

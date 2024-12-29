@@ -11,22 +11,21 @@ import {NgOptimizedImage} from "@angular/common";
 
 
 @Component({
-  selector: 'app-instagram-media',
-  standalone: true,
-  imports: [
-    FormatDatePipe,
-    MatButton,
-    MatCard,
-    MatCardActions,
-    MatCardContent,
-    MatCardImage,
-    MatIcon,
-    MatIconButton,
-    TruncatePipe,
-    NgOptimizedImage
-  ],
-  templateUrl: './instagram-media.component.html',
-  styleUrl: './instagram-media.component.scss'
+    selector: 'app-instagram-media',
+    imports: [
+        FormatDatePipe,
+        MatButton,
+        MatCard,
+        MatCardActions,
+        MatCardContent,
+        MatCardImage,
+        MatIcon,
+        MatIconButton,
+        TruncatePipe,
+        NgOptimizedImage
+    ],
+    templateUrl: './instagram-media.component.html',
+    styleUrl: './instagram-media.component.scss'
 })
 export class InstagramMediaComponent {
   @Input() media!: Media;
