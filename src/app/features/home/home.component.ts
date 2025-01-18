@@ -1,40 +1,25 @@
-import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
-import {AsyncPipe} from "@angular/common";
-import {InstagramService} from "@app/share/services/instagram.service";
-import {Observable, tap} from "rxjs";
-import {Media} from "@app/share/models/media";
+import {Component, inject, signal} from '@angular/core';
+import {delay, tap} from "rxjs";
 import {InstagramMediaComponent} from "./instagram/instagram-media/instagram-media.component";
 import {MatProgressBar} from "@angular/material/progress-bar";
-import {StubInstagramService} from "@app/share/services/stub-instagram.service";
-import {IInstagramService, INSTAGRAM_SERVICE} from "@app/share/services/i-instagram.service";
+import {INSTAGRAM_SERVICE} from "@app/share/services/i-instagram.service";
+import {toSignal} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'app-home',
-    imports: [
-        AsyncPipe,
-        InstagramMediaComponent,
-        MatProgressBar
-    ],
+  imports: [
+    InstagramMediaComponent,
+    MatProgressBar
+  ],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent {
 
-
-
-  private instagramService = inject(INSTAGRAM_SERVICE);
-  media$!:Observable<Media[]>
-  onLoadMedia:WritableSignal<boolean>  = signal(true);
-
-
-  ngOnInit(): void {
-    this.media$ = this.instagramService.getMedias().pipe(
-      tap({
-        next: () => this.onLoadMedia.set(false),
-        error: () => this.onLoadMedia.set(false)
-      })
-    );
-  }
-
+  onLoadMedia = signal(true);
+  mediaSignal= toSignal(inject(INSTAGRAM_SERVICE).getMedias().pipe(
+    delay(2000),
+    tap(() => this.onLoadMedia.set(false))
+  ), {initialValue:[]});
 
 }

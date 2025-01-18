@@ -1,7 +1,7 @@
 <mat-card class="instagram-card" [class.multi-instagram-card]="!isDialog">
 
-  @if(media.mediaType === 'CAROUSEL_ALBUM' && media.children !== null) {
-    @for(img of media.children;track img.id;let i = $index) {
+  @if(media().mediaType === 'CAROUSEL_ALBUM' && media().children !== null) {
+    @for(img of media().children;track img.id;let i = $index) {
       <img mat-card-image [class.active]="i === activeSlideIndex()" [src]="img.mediaUrl" alt="Instagram media">
     }
     @if(showPrevControl()){
@@ -16,25 +16,25 @@
     }
 
   } @else {
-    <img mat-card-image class="active" [src]="media.mediaUrl" alt="Instagram media">
+    <img mat-card-image class="active" [src]="media().mediaUrl" alt="Instagram media">
   }
 
 
   <mat-card-content>
     <p class="texte-multilignes">
-      @if(!isDialog && (media.caption | truncate: 100 : true); as result  ) {
+      @if(!isDialog && (media().caption | truncate: 100 : true); as result  ) {
         {{ result.text }}
         @if(result.isTruncated) {
           <a (click)="openDialog()">... Voir plus</a>
         }
       } @else {
-        {{ media.caption }}
+        {{ media().caption }}
       }
 
     </p>
   </mat-card-content>
   <mat-card-actions>
-    Posté le {{media.timestamp | formatDate}}
+    Posté le {{media().timestamp | formatDate}}
     @if(!isDialog) {
       <button mat-button (click)="openDialog()">Voir</button>
     }
