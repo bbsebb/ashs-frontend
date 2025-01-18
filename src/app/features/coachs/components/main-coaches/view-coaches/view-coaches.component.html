@@ -1,0 +1,22 @@
+<div>
+  <div class="coach-card-list">
+    @if(paginatedResourceCoachesInputSignal().hasEmbedded("coaches")) {
+      @for(coach of paginatedResourceCoachesInputSignal().getEmbedded("coaches")  ; track coach.getSelfLink().href) {
+        <app-coach-card [coach]="coach" (deleteCoach)="onDeleteCoachEvent($event)" (modifyCoach)="onModifyCoachEvent($event)"></app-coach-card>
+      }
+    } @else {
+      <p>Aucun coach</p>
+    }
+  </div>
+
+  <mat-paginator
+    [length]="paginatedResourceCoachesInputSignal().page.totalElements"
+    [pageSize]="paginatedResourceCoachesInputSignal().page.size"
+    [pageIndex]="paginatedResourceCoachesInputSignal().page.number"
+    (page)="onHandlePageEvent($event)"
+
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 50]"
+  ></mat-paginator>
+
+</div>

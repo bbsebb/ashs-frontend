@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{coachInputSignal().name}} {{coachInputSignal().surname}}</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
+      <p><mat-icon>call</mat-icon>{{coachInputSignal().phone}}</p>
+      <p><mat-icon>email</mat-icon>{{coachInputSignal().email}}</p>
+    </mat-card-content>
+  @if(coachInputSignal().hasTemplate("updateCoach") || coachInputSignal().hasTemplate("deleteCoach")) {
+  <mat-card-actions [align]="'end'">
+    @if(coachInputSignal().hasTemplate("updateCoach")) {
+      <button mat-button (click)="onModify()">Modifier</button>
+    }
+    @if(coachInputSignal().hasTemplate("deleteCoach")) {
+      <button mat-button (click)="onDelete()">Supprimer</button>
+    }
+  </mat-card-actions>
+  }
+</mat-card>

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IInstagramService } from './i-instagram.service';
+import { HallService } from './hall.service';
 
-describe('IInstagramService', () => {
-  let service: IInstagramService;
+describe('HallServiceService', () => {
+  let service: HallService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    /*service = TestBed.inject(IInstagramService);*/
+    service = TestBed.inject(HallService);
   });
 
   it('should be created', () => {

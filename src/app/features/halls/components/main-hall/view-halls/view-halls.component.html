@@ -1,0 +1,22 @@
+<div>
+  <div class="coach-card-list">
+    @if(paginatedResourceHallsSignal().hasEmbedded("halls")) {
+      @for(hall of paginatedResourceHallsSignal().getEmbedded("halls")  ; track hall.getSelfLink().href) {
+        <app-hall-card [hall]="hall" (deleteHall)="onDeleteHallEvent($event)" (modifyHall)="onModifyHallEvent($event)"></app-hall-card>
+      }
+    } @else {
+      <p>Aucune salle</p>
+    }
+  </div>
+
+  <mat-paginator
+    [length]="paginatedResourceHallsSignal().page.totalElements"
+    [pageSize]="paginatedResourceHallsSignal().page.size"
+    [pageIndex]="paginatedResourceHallsSignal().page.number"
+    (page)="onHandlePageEvent($event)"
+
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 50]"
+  ></mat-paginator>
+
+</div>

@@ -1,0 +1,25 @@
+<div>
+  <div class="coach-card-list">
+    @if(paginatedResourceTrainingSessionsSignal().hasEmbedded("trainingSessions")) {
+      @for(trainingSession of paginatedResourceTrainingSessionsSignal().getEmbedded("trainingSessions")  ; track trainingSession.id) {
+      <app-training-session-card [trainingSession]="trainingSession"
+                                 (deleteTrainingSession)="onDeleteTrainingSessionEvent($event)"
+                                 (modifyTrainingSession)="onModifyTrainingSessionEvent($event)"></app-training-session-card>
+      }
+    } @else {
+      <p>Aucun créneau d'entrainement</p>
+    }
+  </div>
+
+  <mat-paginator
+    [length]="paginatedResourceTrainingSessionsSignal().page.totalElements"
+    [pageSize]="paginatedResourceTrainingSessionsSignal().page.size"
+    [pageIndex]="paginatedResourceTrainingSessionsSignal().page.number"
+    (page)="onHandlePageEvent($event)"
+
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="[5, 10, 50]"
+  ></mat-paginator>
+
+</div>
+
