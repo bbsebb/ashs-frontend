@@ -1,0 +1,86 @@
+<div class="maintenance-container">
+  <div class="maintenance-content">
+    <div class="maintenance-header">
+      <div class="maintenance-icon">
+        <svg viewBox="0 0 100 100" class="gear-icon">
+          <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="4"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" stroke-width="3"/>
+          <g class="gear-teeth">
+            <rect x="48" y="10" width="4" height="10" fill="currentColor"/>
+            <rect x="48" y="80" width="4" height="10" fill="currentColor"/>
+            <rect x="10" y="48" width="10" height="4" fill="currentColor"/>
+            <rect x="80" y="48" width="10" height="4" fill="currentColor"/>
+            <rect x="25.86" y="21.86" width="8" height="4" fill="currentColor" transform="rotate(45 29.86 23.86)"/>
+            <rect x="66.14" y="74.14" width="8" height="4" fill="currentColor" transform="rotate(45 70.14 76.14)"/>
+            <rect x="21.86" y="66.14" width="8" height="4" fill="currentColor" transform="rotate(-45 25.86 68.14)"/>
+            <rect x="74.14" y="25.86" width="8" height="4" fill="currentColor" transform="rotate(-45 78.14 27.86)"/>
+          </g>
+        </svg>
+      </div>
+      <h1 class="maintenance-title">Site en Maintenance</h1>
+      <p class="maintenance-subtitle">Nous travaillons pour vous offrir une meilleure expérience</p>
+    </div>
+
+    <div class="countdown-section">
+      <h2 class="countdown-title">Retour prévu le {{targetDate | date:'fullDate'}}</h2>
+      <div class="countdown-timer">
+        <div class="time-unit">
+          <div class="time-value">{{ days }}</div>
+          <div class="time-label">Jours</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-unit">
+          <div class="time-value">{{ hours }}</div>
+          <div class="time-label">Heures</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-unit">
+          <div class="time-value">{{ minutes }}</div>
+          <div class="time-label">Minutes</div>
+        </div>
+        <div class="time-separator">:</div>
+        <div class="time-unit">
+          <div class="time-value">{{ seconds }}</div>
+          <div class="time-label">Secondes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-section">
+      <div class="message-card">
+        <h3>Que se passe-t-il ?</h3>
+        <p>Notre équipe technique effectue une maintenance programmée pour améliorer les performances et la sécurité de notre site web.</p>
+        <div class="features-list">
+          <div class="feature-item">
+            <span class="feature-icon">⚡</span>
+            <span>Amélioration des performances</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🔒</span>
+            <span>Renforcement de la sécurité</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-icon">🎨</span>
+            <span>Nouvelles fonctionnalités</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-section">
+      <p class="contact-text">Pour toute urgence, contactez-nous par email.</p>
+    </div>
+
+    <div class="maintenance-footer">
+      <p>2025 Association Sportive de Hoenheim Sports Handball</p>
+    </div>
+  </div>
+
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="floating-shape shape-4"></div>
+  </div>
+</div>
